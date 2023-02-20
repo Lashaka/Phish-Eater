@@ -1,8 +1,10 @@
+# Global Classes
 import random
-import string
 
+# Project Classes
 import RandomValuesLists
-
+import ValueGenerator
+ 
 # Generate a random 16-digit credit card number
 credit_card_number = ''.join(str(random.randint(0, 9)) for _ in range(16))
 
@@ -19,25 +21,37 @@ expiration_date = f'{expiration_month}/{expiration_year}'
 # Generate a random security code (3 or 4 digits)
 security_code = ''.join(str(random.randint(0, 9)) for _ in range(3))
 
-def generate_email(length):
-    """Generate a random email address with the specified length."""
-    username = random.choice(RandomValuesLists.Usernames)
-    ending = random.choice(['gmail.com', 'outlook.com', 'yahoo.com','icloud.com', 'aol.com', 'qq.com','naver.com', 'daum.net', 'yandex.com'])
-    return f"{username}@{ending}"
-
-def generate_phone():
-    """Generate a random phone number in the format XXX-XXX-XXXX."""
-    area_code = ''.join(random.choice(string.digits) for _ in range(3))
-    first_three = ''.join(random.choice(string.digits) for _ in range(3))
-    last_four = ''.join(random.choice(string.digits) for _ in range(4))
-    return f"{area_code}-{first_three}-{last_four}"
-
-# Example usage:
-print("Random email address:", generate_email(10))
-print("Random phone number:", generate_phone())
+# ADD THAT IF ITS A SINGLE NUMBER +0 FROM BEFORE IT??? ^
 
 # Print the generated credit card information
+print(f"Email address:", ValueGenerator.generate_email(10))
+print(f"Phone number:", ValueGenerator.generate_phone())
 print(f'Credit Card Number: {credit_card_number}')
 print(f'Cardholder Name: {cardholder_name}')
 print(f'Expiration Date: {expiration_date}')
 print(f'Security Code: {security_code}')
+
+# Random address
+from faker import Faker
+
+fake = Faker()
+
+street_address = fake.street_address()
+street_address_line_2 = fake.secondary_address()
+city = fake.city()
+country = fake.country()
+zip_code = fake.zipcode()
+region = fake.state()
+
+print("Street Address:", street_address)
+print("Street Address Line 2:", street_address_line_2)
+print("City:", city)
+print("Country:", country)
+print("Zip Code:", zip_code)
+print("Region:", region)
+
+# Fake company name
+
+company_name = fake.company()
+
+print("Company Name:", company_name)
