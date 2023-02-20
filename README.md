@@ -1,4 +1,4 @@
-# Phish-Eater
+# Phish-Eater - ON WORK
 a script that gets a phishing website link and submits a lot of false data forms with random credit card and personal data to false Scammers
 
 
